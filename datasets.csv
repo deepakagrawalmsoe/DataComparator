@@ -1,0 +1,11 @@
+name,description,sql_server_table,s3_parquet_key,chunk_size_override,max_parallelism_override,enable_metadata_comparison,enable_fingerprinting,enable_sampling,enable_full_comparison,sample_size_override,notes
+customer_data,Customer master data comparison,customers,data/customers.parquet,,,,,,,,,
+product_data,Product catalog comparison,products,data/products.parquet,,,,,,,,,
+order_data,Order transaction data comparison,orders,data/orders.parquet,2000000,16,,,,,,
+inventory_data,Inventory levels comparison,inventory,data/inventory.parquet,,,,,,,,,
+financial_data,Financial transactions comparison,financial_transactions,data/financial_transactions.parquet,,,,,,,,,
+user_profiles,User profile data comparison,user_profiles,data/user_profiles.parquet,,,,,,,,,
+transactions,Transaction records comparison,transactions,data/transactions.parquet,1500000,12,,,,,,
+product_categories,Product category data comparison,product_categories,data/product_categories.parquet,,,,,,,,,
+suppliers,Supplier information comparison,suppliers,data/suppliers.parquet,,,,,,,,,
+warehouses,Warehouse data comparison,warehouses,data/warehouses.parquet,,,,,,,,,

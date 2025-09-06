@@ -1,0 +1,55 @@
+# Data Comparator Configuration
+data_sources:
+  sql_server:
+    server: "your-sql-server.database.windows.net"
+    database: "your_database"
+    table: "your_table"
+    username: "your_username"
+    password: "your_password"
+    driver: "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    url_template: "jdbc:sqlserver://{server}:1433;database={database};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+    
+  s3_parquet:
+    bucket: "your-s3-bucket"
+    key: "path/to/your/file.parquet"
+    region: "us-east-1"
+    access_key: "your_access_key"
+    secret_key: "your_secret_key"
+
+comparison_settings:
+  # Performance settings
+  chunk_size: 1000000  # Rows per chunk
+  max_parallelism: 8   # Number of parallel tasks
+  sample_size: 100000  # Sample size for initial analysis
+  
+  # Comparison strategies
+  enable_metadata_comparison: true
+  enable_fingerprinting: true
+  enable_sampling: true
+  enable_full_comparison: true
+  
+  # Fingerprinting settings
+  fingerprint_columns: []  # Empty means all columns
+  fingerprint_algorithm: "md5"  # md5, sha256, xxhash
+  
+  # Sampling settings
+  sampling_strategy: "random"  # random, systematic, stratified
+  sampling_ratio: 0.01  # 1% of data
+  
+  # Output settings
+  output_format: "json"  # json, csv, parquet
+  output_path: "./comparison_results"
+  detailed_report: true
+
+# Datasets are now configured in datasets.yaml
+# Use --datasets parameter to specify datasets file path
+
+# Spark configuration
+spark_config:
+  app_name: "DataComparator"
+  master: "local[*]"
+  executor_memory: "4g"
+  driver_memory: "2g"
+  max_result_size: "2g"
+  sql_adaptive_enabled: true
+  sql_adaptive_coalesce_partitions_enabled: true
