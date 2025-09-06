@@ -1,0 +1,51 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Complete Command Reference
+Command                                      Description                    Default Files
+--------------------------------------------------------------------------------------------------
+python data_comparator.py                    Compare all datasets           config.yaml, datasets.csv
+python data_comparator.py --dataset NAME     Compare specific dataset       config.yaml, datasets.csv
+python data_comparator.py --config FILE      Use custom config              datasets.csv
+python data_comparator.py --datasets FILE    Use custom datasets            config.yaml
+python data_comparator.py --verbose          Enable verbose logging         config.yaml, datasets.csv
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Dataset Management Commands
+---------------------------
+# List all datasets
+python manage_datasets.py list
+
+# Validate CSV structure
+python manage_datasets.py validate
+
+# Create sample CSV template
+python manage_datasets.py sample --output my_datasets.csv
+
+# Convert YAML to CSV
+python manage_datasets.py convert --yaml datasets.yaml --output datasets.csv
+
+# Show dataset details
+python manage_datasets.py details --name customer_data
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Example Workflow
+----------------
+# 1. Check what datasets are configured
+python manage_datasets.py list
+
+# 2. Validate configuration
+python manage_datasets.py validate
+
+# 3. Run comparison on all datasets
+python data_comparator.py
+
+# 4. Run comparison on specific dataset with verbose logging
+python data_comparator.py --dataset customer_data --verbose
+
+# 5. Use custom configuration files
+python data_comparator.py --config production_config.yaml --datasets production_datasets.csv
+
